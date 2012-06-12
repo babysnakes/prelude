@@ -12,6 +12,8 @@ url
 ede-projects.el
 .DS_Store
 custom.el
+places
+.smex-items
 
 /swank/
 ac-comphist.dat
