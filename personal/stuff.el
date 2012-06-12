@@ -13,3 +13,7 @@
 (setq whitespace-style
       '(face tabs spaces trailing lines-tail space-before-tab newline
              indentation empty space-after-tab space-mark tab-mark newline-mark))
+
+;; xlicense
+(load-library
+ (concat prelude-vendor-dir "xlicense.el"))
