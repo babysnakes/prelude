@@ -1,3 +1,8 @@
+;; disable guru-mode
+(defun disable-guru-mode ()
+  (guru-mode -1))
+(add-hook 'prelude-prog-mode-hook 'disable-guru-mode t)
+
 ;; auto-complete:
 ;; somehow it doesn't get activated by the package.
 (require 'auto-complete-config)
