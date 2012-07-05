@@ -16,8 +16,8 @@
 ;; Modified whitespace highlighting
 ;; (only highlight portion of the line that exceeds length)
 (setq whitespace-style
-      '(face tabs trailing lines-tail space-before-tab newline indentation
-             empty space-after-tab tab-mark newline-mark))
+      '(face tabs trailing lines-tail space-before-tab newline
+             indentation empty space-after-tab tab-mark))
 
 ;; xlicense
 (load-library
