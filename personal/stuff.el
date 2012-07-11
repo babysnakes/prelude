@@ -3,6 +3,11 @@
   (guru-mode -1))
 (add-hook 'prelude-prog-mode-hook 'disable-guru-mode t)
 
+;; Override the CM-h shortcut in ruby-mode (which points to
+;; ruby-mark-defun). It should delete word backward like in all other
+;; modes.
+(define-key ruby-mode-map "\e\C-h" 'backward-kill-word)
+
 ;; auto-complete:
 ;; somehow it doesn't get activated by the package.
 (require 'auto-complete-config)
