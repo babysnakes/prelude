@@ -19,6 +19,12 @@
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
 
+;; Ruby indentation in parenthesis
+(setq ruby-deep-indent-paren nil)
+
+;; Common lisp interpreter
+(setq inferior-lisp-program "ccl64")
+
 ;; chef-mode
 (add-to-list 'load-path (concat prelude-vendor-dir "chef-mode"))
 (require 'chef-mode)
