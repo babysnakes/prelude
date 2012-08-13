@@ -23,7 +23,7 @@
 (setq ruby-deep-indent-paren nil)
 
 ;; Common lisp interpreter
-(setq inferior-lisp-program "ccl64")
+(setq inferior-lisp-program "sbcl")
 
 ;; chef-mode
 (add-to-list 'load-path (concat prelude-vendor-dir "chef-mode"))
