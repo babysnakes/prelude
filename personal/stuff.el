@@ -25,6 +25,9 @@
 ;; Common lisp interpreter
 (setq inferior-lisp-program "sbcl")
 
+;; Scheme interpreter
+(setq scheme-program-name "mit-scheme")
+
 ;; chef-mode
 (add-to-list 'load-path (concat prelude-vendor-dir "chef-mode"))
 (require 'chef-mode)
