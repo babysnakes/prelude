@@ -23,6 +23,9 @@
 ;; Ruby indentation in parenthesis
 (setq ruby-deep-indent-paren nil)
 
+;; RSpec - Don't run with rake
+(setq rspec-use-rake-flag nil)
+
 ;; Common lisp interpreter
 (setq inferior-lisp-program "sbcl")
 
