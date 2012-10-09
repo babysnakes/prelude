@@ -21,8 +21,11 @@
 ;; RSpec - Don't run with rake
 (setq rspec-use-rake-flag nil)
 
-;; Common lisp interpreter
+;; Common lisp
 (setq inferior-lisp-program "sbcl")
+; This hook throws an error when not using clojure!
+; originates in clojure-mode.
+(remove-hook 'slime-indentation-update-hooks 'put-clojure-indent)
 
 ;; Scheme interpreter
 (setq scheme-program-name "mit-scheme")
