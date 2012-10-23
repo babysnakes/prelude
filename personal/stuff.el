@@ -15,10 +15,6 @@
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'nrepl-mode))
 
-;; Align clojure lets, routes, etc
-(add-to-list 'load-path (concat prelude-vendor-dir "align-cljlet"))
-(require 'align-cljlet)
-
 ;; Ruby indentation in parenthesis
 (setq ruby-deep-indent-paren nil)
 
@@ -48,7 +44,3 @@
 ;; xlicense
 (load-library
  (concat prelude-vendor-dir "xlicense.el"))
-
-;; more custom themes
-(add-to-list 'custom-theme-load-path
-             (concat prelude-vendor-dir "tomorrow-theme"))
