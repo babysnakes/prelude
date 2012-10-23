@@ -1,22 +1,15 @@
-```
- ____           _           _
-|  _ \ _ __ ___| |_   _  __| | ___
-| |_) | '__/ _ \ | | | |/ _` |/ _ \
-|  __/| | |  __/ | |_| | (_| |  __/
-|_|   |_|  \___|_|\__,_|\__,_|\___|
-```
-
-## Prelude
+Emacs Prelude
+=============
 
 Emacs is probably the best text editor in the world. However, the
 process of coming up with a useful Emacs configuration is long and
 difficult. It's this process that separates you from truly taking
 advantage of Emacs's power. I like to refer to this process as the
-**Prelude**. The **Emacs Prelude** has the goal to ease the initial
-Emacs setup process and to provide you with a much more powerful and
-productive experience than that you get out of the box. By using **Emacs
-Prelude** you're basically getting a "Get me out of the Prelude, I
-just want to use Emacs" card.
+**Prelude**. **Emacs Prelude** has the goal to ease the initial Emacs
+setup process and to provide you with a much more powerful and
+productive experience than the one you get out of the box. By using
+**Emacs Prelude** you're basically getting a *"Get me out of the
+Prelude, I just want to use Emacs"* card.
 
 Emacs Prelude is compatible **ONLY with GNU Emacs 24.x**. 
 
@@ -27,7 +20,9 @@ etc), you already have Emacs 24 installed, as well as `git` & `curl` you
 can skip the whole manual and just type in your favorite shell the
 following command:
 
-`curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh`
+```bash
+$ curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+```
 
 You can now power up your Emacs, sit back and enjoy Prelude,
 forgetting about the rest of this manual.
@@ -36,17 +31,15 @@ There are two environment variables you can use to control the
 source repository and the installation directory. To change the 
 installation directory:
 
-`PRELUDE_INSTALL_DIR="$HOME/.emacs.d" && 
- curl -L
-https://github.com/bbatsov/prelude/raw/master/utils/installer.sh
-| sh`
+```bash
+$ PRELUDE_INSTALL_DIR="$HOME/.emacs.d" && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+```
 
 To change the source repository:
 
-`PRELUDE_URL="https://github.com/yourname/prelude.git" &&
- curl -L
-https://github.com/bbatsov/prelude/raw/master/utils/installer.sh
-| sh`
+```bash
+$ PRELUDE_URL="https://github.com/yourname/prelude.git" && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+```
 
 Note that the installer will back up any existing `.emacs` file or
 `.emacs.d` since it will unpack Prelude's code in `.emacs.d`. If
@@ -69,20 +62,24 @@ first. Have a look at the [WikEmacs articles on installing Emacs](http://wikemac
 
 ### Automated
 
-You can install Emacs via the command line with either `curl` or
+You can install **Emacs Prelude** via the command line with either `curl` or
 `wget`. Naturally `git` is also required.
 
 #### Via Curl
 
 If you're using `curl` type the following command:
 
-`curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh`
+```bash
+$ curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+```
 
 #### Via Wget
 
 If you're using `wget` type:
 
-`wget --no-check-certificate https://github.com/bbatsov/prelude/raw/master/utils/installer.sh -O - | sh`
+```bash
+$ wget --no-check-certificate https://github.com/bbatsov/prelude/raw/master/utils/installer.sh -O - | sh
+```
 
 ### Manual
 
@@ -101,7 +98,9 @@ You'd do well to replace `~/.emacs.d` with the value of
 Nothing fancy here. Just start Emacs as usual. Personally I run Emacs
 in daemon mode:
 
-`$ emacs --daemon`
+```bash
+$ emacs --daemon
+```
 
 Afterwards I connect to the server with either a terminal or a GUI
 client like this:
@@ -128,13 +127,23 @@ the command line using `vi(m)`.
 
 Certainly the best way to understand how Prelude enhances the default
 Emacs experience is to peruse Prelude's source code (which is
-obviously written in Emacs Lisp). If you're intimidated by the source
-- do not despair. Prelude includes a `prelude-mode` minor Emacs mode
+obviously written in Emacs Lisp). Understanding the code is not
+necessary of course. Prelude includes a `prelude-mode` minor Emacs mode
 which collects some of the additional functionality added by
 Prelude. It also adds an additional keymap that binds many of those
 extensions to keybindings.
 
-## Color Themes
+### Automatic package installation
+
+The default Prelude installation comes with a bare minimum of
+functionality. It will however install add-ons for various programming
+languages and frameworks on demand. For instance - if you try to open
+a `.clj` file `clojure-mode`, `nrepl.el` and prelude's enhanced Lisp
+configuration will be installed automatically for you.
+
+You can, of course, install anything you wish manually as well.
+
+### Color Themes
 
 Emacs 24 ships with a new theming facility that effectively renders
 the old color-theme package obsolete. Emacs 24 provides a dozen of
@@ -151,24 +160,43 @@ back to the default (or select another theme entirely).
 To disable Zenburn just put in your personal config the following
 line:
 
-```elisp
+```lisp
 (disable-theme 'zenburn)
 ```
 
 Or you can use another theme altogether by adding something like:
 
-```elisp
+```lisp
 (load-theme 'solarized-dark t)
 ```
 
 P.S. Solarized is not available by default - you'll have to install it from MELPA first.
 
-## Personalizing
+### Personalizing
 
 Fork the official Prelude repo and add your own touch to it. You're advised to avoid changing stuff outside of the
 personal folder to avoid having to deal with git merge conflicts in the future.
 
-## Prelude Modules
+#### Disable whitespace-mode
+
+Some people find `whitespace-mode` too intrusive and might want to
+disable it. It come be done from your personal config with the
+following bit of code:
+
+```lisp
+(add-hook 'prog-mode-hook 'whitespace-turn-off t)
+```
+
+#### Disable flyspell-mode
+
+If you're not fond of spellchecking on the fly:
+
+```lisp
+(add-hook 'text-mode-hook 'turn-off-flyspell t)
+(add-hook 'prog-mode-hook 'turn-off-flyspell t)
+```
+
+### Prelude Modules
 
 Additional settings for various programming languages are available for installation via MELPA. You might take a look at the [Prelude Modules project](https://github.com/bbatsov/prelude-modules) for further info.
 
@@ -194,7 +222,7 @@ If your Emacs looks considerably uglier in a terminal (compared to the
 GUI version) try adding this to your `.bashrc` or `.zshrc`:
 
 ```bash
-export TERM=xterm-256color
+$ export TERM=xterm-256color
 ```
 
 Source the `.bashrc` file and start Emacs again.
@@ -215,8 +243,12 @@ use them.
 
 If you'd still like to use the arrow keys just invoke `M-x
 guru-mode` to enable them for the duration of your
-current Emacs session or add `(guru-mode -1)` to your
-personal Emacs customization to enable them permanently.
+current Emacs session or add the following snippet to your
+personal Emacs customization to enable them permanently:
+
+```lisp
+(add-hook 'prog-mode-hook 'turn-off-guru-mode t)
+```
 
 ### Windows compatibility
 
@@ -238,7 +270,11 @@ settings required to access WikEmacs right away.
 Check out the project's
 [issue list](https://github.com/bbatsov/prelude/issues?sort=created&direction=desc&state=open)
 a list of unresolved issues. By the way - feel free to fix any of them
-and sent me a pull request. :-)
+and send me a pull request. :-)
+
+## Support
+
+Support is available via the Prelude Google Group <emacs-prelude@googlegroups.com>.
 
 ## Contributors
 
@@ -248,7 +284,7 @@ development of Emacs Prelude.
 ## Bugs & Improvements
 
 Bug reports and suggestions for improvements are always
-welcome. github pull requests are even better! :-)
+welcome. GitHub pull requests are even better! :-)
 
-Cheers,<br>
+Cheers,<br/>
 Bozhidar
