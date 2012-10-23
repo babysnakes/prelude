@@ -31,7 +31,7 @@
 (setq scheme-program-name "mit-scheme")
 
 ;; chef-mode
-(add-to-list 'load-path (concat prelude-vendor-dir "chef-mode"))
+(add-to-list 'load-path (concat prelude-vendor-dir "/chef-mode"))
 (require 'chef-mode)
 (setq chef-use-rvm nil)
 
@@ -43,4 +43,4 @@
 
 ;; xlicense
 (load-library
- (concat prelude-vendor-dir "xlicense.el"))
+ (concat prelude-vendor-dir "/xlicense.el"))
