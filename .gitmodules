@@ -1,3 +1,6 @@
 [submodule "vendor/chef-mode"]
 	path = vendor/chef-mode
 	url = git://github.com/mpasternacki/chef-mode.git
+[submodule "vendor/align-cljlet"]
+	path = vendor/align-cljlet
+	url = git://github.com/gstamp/align-cljlet.git
